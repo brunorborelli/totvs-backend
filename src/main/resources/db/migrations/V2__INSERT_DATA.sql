@@ -7,14 +7,14 @@ VALUES
 
 INSERT INTO cliente (nome, endereco_id)
 VALUES
-    ('João Silva', 1),
-    ('Maria Oliveira', 2),
-    ('Pedro Santos', 3);
+    ('João', 1),
+    ('Maria', 2),
+    ('Pedro', 3);
 
 INSERT INTO telefone (telefone, cliente_id)
 VALUES
-    ('11999999999', 1),
-    ('21988888888', 2),
-    ('31977777777', 3),
-    ('11966666666', 1),
-    ('21955555555', 2);
+    ('9226381217', 1),
+    ('6927115324', 2),
+    ('6339033544', 3),
+    ('6733826239', 1),
+    ('9224282323', 2);
