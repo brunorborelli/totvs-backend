@@ -27,4 +27,6 @@ public class Telefone {
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
+
+    private boolean status = true;
 }

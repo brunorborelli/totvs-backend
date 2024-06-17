@@ -25,4 +25,5 @@ public class Endereco {
     private String numero;
     private String cidade;
     private String estado;
+    private boolean status = true;
 }

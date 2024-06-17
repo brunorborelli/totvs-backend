@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ClienteService {
@@ -46,7 +47,34 @@ public class ClienteService {
         clienteRepository.save(cliente);
     }
 
+    @Transactional
+    public ClienteResponseDTO atualizarCliente(Long id, ClienteRequestDTO clienteDTO) {
+        Cliente clienteExistente = clienteRepository.findById(id)
+                .orElseThrow(() -> new ObjetoNaoEncontradoException("Cliente não encontrado"));
 
+        inativaRelacionamentos(clienteExistente, clienteDTO);
+
+        Cliente clienteAtualizado = atualizarDadosCliente(clienteDTO, clienteExistente);
+
+        return mapper.entityToResponseDTO(clienteAtualizado);
+    }
+
+    private void inativaRelacionamentos(Cliente clienteExistente, ClienteRequestDTO clienteDTO) {
+        if (!Objects.isNull(clienteDTO.getEndereco())) {
+            clienteExistente.getEndereco().setStatus(false);
+        }
+        if (!Objects.isNull(clienteDTO.getTelefones())) {
+            clienteExistente.getTelefones().forEach(telefone -> telefone.setStatus(false));
+        }
+    }
+
+    private Cliente atualizarDadosCliente(ClienteRequestDTO clienteDTO, Cliente clienteExistente) {
+        Cliente clienteAtualizado = mapper.requestDtoToEntity(clienteDTO);
+        clienteAtualizado.setId(clienteExistente.getId());
+        clienteAtualizado.setStatus(clienteExistente.getStatus());
+        clienteRepository.save(clienteAtualizado);
+        return clienteAtualizado;
+    }
 
 
 }
