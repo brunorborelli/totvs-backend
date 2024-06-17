@@ -9,6 +9,7 @@ import com.totvs.backend.model.telefone.dto.TelefoneResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -60,6 +61,16 @@ public class ClienteMapper {
 
       return dto;
    }
+
+   public List<ClienteResponseDTO> entitiyListToResponseDtoList(List<Cliente> entities) {
+      if (entities == null) {
+         return Collections.emptyList();
+      }
+      return entities.stream()
+              .map(this::entityToResponseDTO)
+              .collect(Collectors.toList());
+   }
+
 
 
 }
