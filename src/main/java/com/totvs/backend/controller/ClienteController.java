@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -87,4 +88,21 @@ public class ClienteController {
         clienteService.softDeleteCliente(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @PutMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+    @Operation(
+            summary = "Atualizar Cliente",
+            description = "Rota para atualizar cliente por ID"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Cliente atualizado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+            @ApiResponse(responseCode = "404", description = "Cliente não encontrado"),
+            @ApiResponse(responseCode = "500", description = "Erro do lado do servidor")
+    })
+    public ResponseEntity<ClienteResponseDTO> atualizarCliente(@PathVariable("id") Long id, @RequestBody ClienteRequestDTO clienteDTO) {
+        ClienteResponseDTO clienteAtualizado = clienteService.atualizarCliente(id, clienteDTO);
+        return ResponseEntity.ok(clienteAtualizado);
+    }
 }
+

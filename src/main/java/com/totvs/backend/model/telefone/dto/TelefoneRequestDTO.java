@@ -10,7 +10,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TelefoneRequestDTO {
-    private String codigoDiscagem;
-    private String ddd;
     private String telefone;
 }
