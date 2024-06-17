@@ -38,6 +38,14 @@ public class ClienteService {
         return mapper.entityToResponseDTO(cliente);
     }
 
+    public void softDeleteCliente(Long id) {
+        Cliente cliente = clienteRepository.findClienteById(id)
+                .orElseThrow(() -> new ObjetoNaoEncontradoException("Cliente não encontrado"));
+
+        cliente.setStatus(false);
+        clienteRepository.save(cliente);
+    }
+
 
 
 
