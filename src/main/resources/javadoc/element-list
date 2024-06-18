@@ -1,0 +1,14 @@
+com.totvs.backend
+com.totvs.backend.controller
+com.totvs.backend.exceptions
+com.totvs.backend.mapper
+com.totvs.backend.model.cliente
+com.totvs.backend.model.cliente.dto
+com.totvs.backend.model.endereco
+com.totvs.backend.model.endereco.dto
+com.totvs.backend.model.telefone
+com.totvs.backend.model.telefone.dto
+com.totvs.backend.repository
+com.totvs.backend.service
+com.totvs.backend.stub
+com.totvs.backend.util
