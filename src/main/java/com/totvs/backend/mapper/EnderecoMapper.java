@@ -5,9 +5,18 @@ import com.totvs.backend.model.endereco.dto.EnderecoRequestDTO;
 import com.totvs.backend.model.endereco.dto.EnderecoResponseDTO;
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe responsável por realizar o mapeamento entre entidades Endereco e seus DTOs relacionados.
+ */
 @Component
 public class EnderecoMapper {
 
+    /**
+     * Converte um EnderecoRequestDTO em uma entidade Endereco.
+     *
+     * @param dto EnderecoRequestDTO a ser convertido.
+     * @return Endereco convertido a partir do DTO.
+     */
       public Endereco requestDtoToEntity(EnderecoRequestDTO dto) {
         if (dto == null) {
             return null;
@@ -22,6 +31,13 @@ public class EnderecoMapper {
 
         return endereco;
     }
+
+    /**
+     * Converte uma entidade Endereco em um EnderecoResponseDTO.
+     *
+     * @param entity Entidade Endereco a ser convertida.
+     * @return EnderecoResponseDTO convertido a partir da entidade.
+     */
     public EnderecoResponseDTO entityToResponseDTO(Endereco entity) {
         if (entity == null) {
             return null;

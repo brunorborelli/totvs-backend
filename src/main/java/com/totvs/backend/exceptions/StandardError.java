@@ -1,5 +1,9 @@
 package com.totvs.backend.exceptions;
 
+/**
+ * Classe que representa um padrão de estrutura para erros retornados pela API.
+ * Contém informações como timestamp, status HTTP, tipo de erro, mensagem detalhada e caminho da requisição.
+ */
 public class StandardError {
     private Long timestamp;
     private Integer status;

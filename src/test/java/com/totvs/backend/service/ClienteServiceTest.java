@@ -29,6 +29,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+/**
+ * Testes unitarios for {@link ClienteService}.
+ */
 @ExtendWith(MockitoExtension.class)
 public class ClienteServiceTest {
 
@@ -48,6 +51,10 @@ public class ClienteServiceTest {
     @Mock
     TelefoneService telefoneService;
 
+    /**
+     * Testa o método cadastrarCliente() da classe ClienteService.
+     * Verifica se o método save() do ClienteRepository foi chamado uma vez.
+     */
     @Test
     void deveCadastrarCliente(){
         when(clienteMapper.requestDtoToEntity(any(ClienteRequestDTO.class)))
@@ -55,6 +62,12 @@ public class ClienteServiceTest {
         clienteService.cadastrarCliente(getClienteValidoRequestDTO());
         verify(clienteRepository, times(1)).save(any(Cliente.class));
     }
+
+    /**
+     * Testa o método cadastrarCliente() da classe ClienteService quando um nome duplicado é encontrado.
+     * Deve lançar NegocioException com a mensagem apropriada.
+     * Verifica se o método save() do ClienteRepository não foi chamado.
+     */
     @Test
     void deveRetornarExecacao_NomeDuplicado(){
         when(clienteRepository.findByNome("João da Silva"))
@@ -67,6 +80,11 @@ public class ClienteServiceTest {
         verify(clienteRepository, times(0)).save(any(Cliente.class));
     }
 
+    /**
+     * Testa o método cadastrarCliente() da classe ClienteService quando um nome inválido é fornecido.
+     * Deve lançar NegocioException com a mensagem apropriada.
+     * Verifica se o método save() do ClienteRepository não foi chamado.
+     */
     @Test
     void deveRetornarExecacao_NomeInvalido(){
         NegocioException exception = assertThrows(NegocioException.class, () -> {
@@ -76,6 +94,10 @@ public class ClienteServiceTest {
         verify(clienteRepository, times(0)).save(any(Cliente.class));
     }
 
+    /**
+     * Testa o método buscarClientes() da classe ClienteService.
+     * Verifica se a lista de ClienteResponseDTO retornada não é nula.
+     */
     @Test
     void deveRetornarClientes(){
         when(clienteRepository.findAllClientes()).thenReturn(List.of(getCliente()));
@@ -84,6 +106,11 @@ public class ClienteServiceTest {
 
     }
 
+
+    /**
+     * Testa o método buscarClientePorId() da classe ClienteService.
+     * Verifica se um ClienteResponseDTO é retornado corretamente ao buscar por um ID existente.
+     */
     @Test
     void deveBuscarClientePorId(){
         when(clienteRepository.findClienteById(1L))
@@ -94,6 +121,10 @@ public class ClienteServiceTest {
         Assertions.assertNotNull(clienteResponseDTO);
     }
 
+    /**
+     * Testa o método atualizarCliente() da classe ClienteService.
+     * Verifica se o método save() do ClienteRepository foi chamado uma vez.
+     */
     @Test
     void deveAtualizarCliente(){
         when(clienteRepository.findById(1L))
