@@ -2,6 +2,7 @@ package com.totvs.backend.model.telefone;
 
 import com.totvs.backend.model.cliente.Cliente;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Telefone {
 
     @Id

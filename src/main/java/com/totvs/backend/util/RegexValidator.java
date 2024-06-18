@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  */
 public class RegexValidator {
 
-    public static final String TELEFONE_REGEX = "^(55\\d{12}|\\d{8})$";
+    public static final String TELEFONE_REGEX = "^(\\+?55\\s?)?(\\(?\\d{2}\\)?\\s?)?(9?\\d{4}-?\\d{4})$";
     public static final Pattern TELEFONE_PATTERN = Pattern.compile(TELEFONE_REGEX);
     public static final String TAMANHO_DEZ = "^.{1,10}$";
 
