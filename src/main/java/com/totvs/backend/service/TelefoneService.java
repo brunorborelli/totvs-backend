@@ -2,8 +2,6 @@ package com.totvs.backend.service;
 
 import com.totvs.backend.exceptions.NegocioException;
 import com.totvs.backend.repository.TelefoneRepository;
-import com.totvs.backend.util.RegexValidator;
-import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +21,6 @@ public class TelefoneService {
             throw new NegocioException("Não é possível cadastrar esse número de telefone," +
                     " tente outra opção ou entre em contato com o administrador do sistema");
         }
-
     }
 
     private Boolean validaTelefoneDuplicado(String telefone){

@@ -8,7 +8,6 @@ import com.totvs.backend.model.cliente.dto.ClienteRequestDTO;
 import com.totvs.backend.model.cliente.dto.ClienteResponseDTO;
 import com.totvs.backend.model.telefone.dto.TelefoneRequestDTO;
 import com.totvs.backend.repository.ClienteRepository;
-import com.totvs.backend.util.RegexValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

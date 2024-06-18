@@ -4,6 +4,7 @@ import com.totvs.backend.model.endereco.Endereco;
 import com.totvs.backend.model.telefone.Telefone;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 public class Cliente {
 
     @Id
