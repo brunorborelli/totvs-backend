@@ -18,6 +18,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.List;
 
+
+/**
+ * Entidade que representa um cliente.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

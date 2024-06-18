@@ -16,6 +16,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
+/**
+ * Testes Unitarios for {@link TelefoneService}.
+ */
 @ExtendWith(MockitoExtension.class)
 public class TelefoneServiceTest {
 
@@ -28,6 +31,10 @@ public class TelefoneServiceTest {
     @Mock
     TelefoneMapper telefoneMapper;
 
+    /**
+     * Testa o método validaCadastroTelefone() da classe TelefoneService quando um telefone inválido é fornecido.
+     * Deve lançar NegocioException com a mensagem apropriada.
+     */
     @Test
     void deveRetornarExecacao_TelefoneInvalido(){
         NegocioException exception = assertThrows(NegocioException.class, () -> {
@@ -36,6 +43,10 @@ public class TelefoneServiceTest {
         assertEquals("Formato de telefone inválido", exception.getMessage());
     }
 
+    /**
+     * Testa o método validaCadastroTelefone() da classe TelefoneService quando um telefone duplicado é fornecido.
+     * Deve lançar NegocioException com a mensagem apropriada.
+     */
     @Test
     void deveRetornarExecacao_TelefoneDuplicado() {
         when(telefoneRepository.findByTelefone("5562982971994"))

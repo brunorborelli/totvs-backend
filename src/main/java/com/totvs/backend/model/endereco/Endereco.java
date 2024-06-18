@@ -11,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
+/**
+ * Entidade que representa um endereço.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

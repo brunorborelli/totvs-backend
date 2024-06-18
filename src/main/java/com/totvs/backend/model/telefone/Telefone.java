@@ -13,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+/**
+ * Entidade que representa um numero de telefone.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

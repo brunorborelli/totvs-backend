@@ -13,6 +13,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Classe responsável por realizar o mapeamento entre entidades Cliente e DTOs relacionados.
+ */
 @Component
 public class ClienteMapper {
 
@@ -22,6 +25,12 @@ public class ClienteMapper {
    @Autowired
    private TelefoneMapper telefoneMapper;
 
+   /**
+    * Converte um ClienteRequestDTO em uma entidade Cliente.
+    *
+    * @param dto ClienteRequestDTO a ser convertido.
+    * @return Cliente convertido a partir do DTO.
+    */
    public Cliente requestDtoToEntity(ClienteRequestDTO dto) {
       if (dto == null) {
          return null;
@@ -42,7 +51,12 @@ public class ClienteMapper {
       return cliente;
    }
 
-
+   /**
+    * Converte uma entidade Cliente em um ClienteResponseDTO.
+    *
+    * @param entity Entidade Cliente a ser convertida.
+    * @return ClienteResponseDTO convertido a partir da entidade.
+    */
    public ClienteResponseDTO entityToResponseDTO(Cliente entity) {
       if (entity == null) {
          return null;
@@ -62,6 +76,12 @@ public class ClienteMapper {
       return dto;
    }
 
+   /**
+    * Converte uma lista de entidades Cliente em uma lista de ClienteResponseDTOs.
+    *
+    * @param entities Lista de entidades Cliente a ser convertida.
+    * @return Lista de ClienteResponseDTOs convertida a partir da lista de entidades.
+    */
    public List<ClienteResponseDTO> entitiyListToResponseDtoList(List<Cliente> entities) {
       if (entities == null) {
          return Collections.emptyList();

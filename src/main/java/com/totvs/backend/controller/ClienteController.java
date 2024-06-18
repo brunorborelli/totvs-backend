@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * RestController para operações relacionadas a clientes.
+ */
 @RestController
 @RequestMapping("/api/cliente")
 public class ClienteController {
@@ -28,6 +31,12 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    /**
+     * Endpoint para cadastrar um novo cliente.
+     *
+     * @param clienteDTO DTO contendo os dados do cliente a ser cadastrado.
+     * @return ResponseEntity representando o status HTTP da operação (201 Created).
+     */
     @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
     @Operation(
             summary = "Cliente",
@@ -45,6 +54,13 @@ public class ClienteController {
             return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /**
+     * Endpoint para buscar um cliente ativo por ID.
+     *
+     * @param id ID do cliente a ser buscado.
+     * @return ResponseEntity com o DTO representando o cliente encontrado (200 OK).
+     *         Ou ResponseEntity com status 404 caso o cliente não seja encontrado.
+     */
     @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     @Operation(
             summary = "Cliente",
@@ -60,6 +76,11 @@ public class ClienteController {
         return ResponseEntity.ok(clienteResponseDTO);
     }
 
+    /**
+     * Endpoint para buscar todos os clientes ativos.
+     *
+     * @return ResponseEntity com a lista de clientes encontrados ou vazia (200).
+     */
     @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
     @Operation(
             summary = "Clientes",
@@ -74,6 +95,13 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
     }
 
+    /**
+     * Endpoint para marcar um cliente como deletado (soft delete) pelo ID.
+     *
+     * @param id ID do cliente a ser marcado como deletado.
+     * @return ResponseEntity representando o status HTTP da operação (204 No Content).
+     *         Ou ResponseEntity com status 404 caso o cliente não seja encontrado.
+     */
     @Operation(
             summary = "Soft Delete de Cliente",
             description = "Marca um cliente como deletado (soft delete) pelo ID"
@@ -89,6 +117,15 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    /**
+     * Endpoint para atualizar os dados de um cliente pelo ID.
+     *
+     * @param id ID do cliente a ser atualizado.
+     * @param clienteDTO DTO contendo os novos dados do cliente.
+     * @return ResponseEntity com o DTO representando o cliente atualizado (200 OK).
+     *         Ou ResponseEntity com status 400 se a requisição for inválida,
+     *         ou status 404 caso o cliente não seja encontrado.
+     */
     @PutMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
     @Operation(
             summary = "Atualizar Cliente",
