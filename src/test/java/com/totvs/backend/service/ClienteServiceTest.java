@@ -90,7 +90,7 @@ public class ClienteServiceTest {
         NegocioException exception = assertThrows(NegocioException.class, () -> {
             clienteService.cadastrarCliente(getClienteRequestDTO());
         });
-        assertEquals("O nome não pode ter mais que 10 caracteres", exception.getMessage());
+        assertEquals("O nome não pode estar vazio ou ter mais que 10 caracteres", exception.getMessage());
         verify(clienteRepository, times(0)).save(any(Cliente.class));
     }
 

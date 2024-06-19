@@ -155,7 +155,7 @@ public class ClienteService {
     private void validaNome(String nome){
         validaNomeDuplicado(nome);
         if(!validaTamanhoTexto(nome,TAMANHO_DEZ)){
-            throw new NegocioException("O nome não pode ter mais que 10 caracteres");
+            throw new NegocioException("O nome não pode estar vazio ou ter mais que 10 caracteres");
         }
     }
 
