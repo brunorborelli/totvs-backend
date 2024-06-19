@@ -25,6 +25,11 @@ Instruções:
   * Caso as dependencias Maven não sejam carregadas corretamente, rode o comando ```mvn clean package install```
   * Por padrão, a aplicação ficara disponivel na porta 8080
 
+# Docker
+Se preferir, é possivel rodar o backend pelo docker;
+* docker pull brunoborelli159/totvs-backend:final-version
+* docker run -d -p 8080:8080 brunoborelli159/totvs-backend:final-version
+
 # Testando a aplicação
 É possivel testar as principais features da aplicação pelo:
   * Frontend: **http://localhost:4200/** onde é possivel cadastrar um cliente e visualizar a lista de clientes cadastrados.
