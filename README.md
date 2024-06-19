@@ -22,6 +22,7 @@ Instruções:
 3- Clone o projeto pelo repositorio em uma pasta de sua escolha.
   * Abra pasta escolhida pelo IntelliJ ou IDE de sua escolha e depois acesse o diretorio do backend e aguarde os processo de indexação da IDE.
   * Inicie o projeto acessando pela classe main BackendApplication;
+  * Caso as dependencias Maven não sejam carregadas corretamente, rode o comando ```mvn clean package install```
   * Por padrão, a aplicação ficara disponivel na porta 8080
 
 # Testando a aplicação
